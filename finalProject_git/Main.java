@@ -8,8 +8,12 @@ import javax.swing.ImageIcon;
 
 public class Main
  {	
+
+	//creating an arraylist of instances of the USerAccount class
 	static ArrayList <UserAccount> list = new ArrayList<UserAccount>();
+	//boolean for inputValidation on sign up page
 	static boolean emailfield, passfield;
+	//creating windows for UI
 	JFrame login = new JFrame("Login Page");
 	JFrame signUpPage = new JFrame("Sign Up Page");
 	
@@ -17,51 +21,54 @@ public class Main
 
 	public static void main (String[] args) throws ClassNotFoundException
 	 {
+		//constructor
 		new Main();
 		
 	 }
-	
+	//consturcutor
 	public Main() throws ClassNotFoundException
 	 {
-			
+		//calls start every time a new Main is made		
 			start();
 			
 		
 	 }
 	public void start() throws ClassNotFoundException
 	 {
+		//calls laod mehtod that deserializes the newData.dat file
 		load();
 		LoginWindow();
 	 }
 	
 	public void LoginWindow() throws ClassNotFoundException
 	 {
+	//UI setup	
+	Container content;
+	JLabel title, userNameL, passWordL, newguy;
+	JTextField tuserName;
+	JPasswordField tpassWord;
+	JButton signIn, signUp;
 		
-		Container content;
-		JLabel title, userNameL, passWordL, newguy;
-		JTextField tuserName;
-		JPasswordField tpassWord;
-		JButton signIn, signUp;
-		
-		
-		login.setLayout(new FlowLayout());
-		login.setSize(500,400);
-		login.setResizable(false);
-		login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);		
-        content = login.getContentPane();
+	//window setup	
+	login.setLayout(new FlowLayout());
+	login.setSize(500,400);
+	login.setResizable(false);
+	login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);		
+	content = login.getContentPane();
         content.setLayout(null);
 
-        
-		title = new JLabel("Work Order Request Form");
-		title.setFont(new Font("Times New Roman", Font.BOLD, 22)); 
-        title.setSize(300, 30); 
+        //title on login page
+	title = new JLabel("Work Order Request Form");
+	title.setFont(new Font("Times New Roman", Font.BOLD, 22)); 
+	title.setSize(300, 30); 
         title.setLocation(120, 30); 
-        content.add(title); 
+	content.add(title); 
         
+	//text and fields
         userNameL = new JLabel("Username: "); 
-        userNameL.setFont(new Font("Calibri Light", Font.PLAIN, 19)); 
-        userNameL.setSize(100, 20); 
-        userNameL.setLocation(50, 132); 
+	userNameL.setFont(new Font("Calibri Light", Font.PLAIN, 19)); 
+	userNameL.setSize(100, 20); 
+	userNameL.setLocation(50, 132); 
         content.add(userNameL); 
         
         passWordL = new JLabel("Password: "); 
@@ -84,7 +91,7 @@ public class Main
         content.add(tpassWord);        
         
         
-        
+        //imagecon
         JLabel SIpic = new JLabel(new ImageIcon(getClass().getResource("/login.PNG")));
         SIpic.setSize(20,30);
         SIpic.setLocation(174,246);
@@ -101,7 +108,7 @@ public class Main
         signIn.setSize(105, 25); 
         signIn.setLocation(200, 250); 
         content.add(signIn);
-
+	//on button press of sign in button
         signIn.addActionListener(new ActionListener() 
          {
 			
@@ -111,7 +118,7 @@ public class Main
         			String username = tuserName.getText();
 					String password = tpassWord.getText();
 					try 
-					 {
+					 {	
 							authentication(username, password);
 					 }
 					catch (ClassNotFoundException e) 
@@ -137,7 +144,7 @@ public class Main
         signUp.setSize(105, 25); 
         signUp.setLocation(200, 310); 
         content.add(signUp);
-
+	//on press of button sigh up button
         signUp.addActionListener(new ActionListener() 
          {
         	
@@ -164,14 +171,14 @@ public class Main
         login.setVisible(true);
      }
 	
-	
-	
+		
+	//checks if usernam eand password is correct accordingly sends errormessage
 	public void authentication(String username, String password) throws ClassNotFoundException
 	 {
 		char foundU = 'a';
 		char foundP = 'a'; 
 		
-		
+		//logic if admin
 		if(username.equals("admin") && password.equals("12345"))
 		 {
 			login.dispose();
@@ -179,30 +186,31 @@ public class Main
 			admin.adminMenu(list);
 			
 		 }
-		
+		//logic for admin but wrong pass
 		else if(username.equals("admin")&& !password.equals("12345"))
 		 {
 			System.out.println("Incorret admin password.");
 			JOptionPane.showMessageDialog(login, "Admin Password Incorrect", "Alert" , JOptionPane.WARNING_MESSAGE);
 
 		 }
-		
+		//logic for empty fields
 		else if(username.equals("") || password.equals(""))
 		 {
 			JOptionPane.showMessageDialog(login, "Please fill all fields.", "Alert" , JOptionPane.WARNING_MESSAGE);
 
 		 }
 
-	
+		//logic is arraylist is not empty
 		else if(!list.isEmpty())
-		 {
+		 {		//iterate through arraylist
 				for ( int i = 0; i < list.size(); i++)
 				 {
 					UserAccount data = list.get(i);
+					//username found
 					if (username.equals(data.getUserName()))
 					 {
 						foundU = 'b';
-						
+						//password matches
 						if(password.equals(data.getPassword()))
 						 {
 							foundP = 'b';
@@ -211,7 +219,7 @@ public class Main
 						 }
 					 }			
 				 }
-		
+		//username found but pass is wrong
 		if( foundP != 'b' && foundU =='b')
 		 {
 			
@@ -219,13 +227,13 @@ public class Main
 			JOptionPane.showMessageDialog(login, "Incorrect Password", "Alert" , JOptionPane.WARNING_MESSAGE);
 			
 		 }
-		
+		//user not found
 		if (foundU != 'b')
 		 {
 			JOptionPane.showMessageDialog(login, "User does not exist", "Alert" , JOptionPane.WARNING_MESSAGE);
 		 }
 		}
-				
+		//array list is empty		
 		else 
 		 {
 			System.out.println("User does not exist");
@@ -233,9 +241,10 @@ public class Main
 		 }
 
 	 }
-	
+	//sign up button leads to this
 	public void createAccount() throws ClassNotFoundException
 	 {
+		//new instance
 		UserAccount newAcc = new UserAccount();
 		login.dispose();
 		Container content1;
@@ -283,6 +292,7 @@ public class Main
         input_email.setFont(new Font("Calibri", Font.PLAIN, 13)); 
         input_email.setSize(270, 30); 
         input_email.setLocation(140, 115);
+	//added keylisterner for pass and email valid
         input_email.addKeyListener(new KeyListener() 
          {
 			
