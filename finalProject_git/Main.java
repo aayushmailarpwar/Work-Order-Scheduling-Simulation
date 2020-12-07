@@ -1,11 +1,9 @@
-
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.io.*;
+import javax.swing.ImageIcon;
 
 
 public class Main
@@ -85,12 +83,14 @@ public class Main
         tpassWord.setLocation(150, 190); 
         content.add(tpassWord);        
         
-        JLabel SIpic = new JLabel(new ImageIcon("images/login.png"));
+        
+        
+        JLabel SIpic = new JLabel(new ImageIcon(getClass().getResource("/login.PNG")));
         SIpic.setSize(20,30);
         SIpic.setLocation(174,246);
         content.add(SIpic);
         
-        JLabel SUpic = new JLabel(new ImageIcon("images/signup.png"));
+        JLabel SUpic = new JLabel(new ImageIcon(getClass().getResource("/signup.PNG")));
         SUpic.setSize(30,30);
         SUpic.setLocation(168,305);
         content.add(SUpic);
