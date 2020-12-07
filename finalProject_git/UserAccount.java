@@ -137,7 +137,7 @@ public class UserAccount implements Serializable, ItemListener
 
 
         
-        JButton backButton = new JButton(new ImageIcon("images/logout.png"));
+        JButton backButton = new JButton(new ImageIcon(getClass().getResource("/logout.PNG")));
 		backButton.setFont(new Font("Arial", Font.BOLD, 14)); 
 		backButton.setSize(32,28);
 		backButton.setLocation(50, 360);
@@ -163,7 +163,7 @@ public class UserAccount implements Serializable, ItemListener
 			
 		accountUI.add(backButton);
 		
-		JLabel account = new JLabel(new ImageIcon("images/account.png"));
+		JLabel account = new JLabel(new ImageIcon(getClass().getResource("/account.PNG")));
 		account.setSize(100, 70);
 		account.setLocation(15, 12);
 		accountUI.add(account);
@@ -175,7 +175,7 @@ public class UserAccount implements Serializable, ItemListener
 		loggedinas.setSize(140, 70);
 		accountUI.add(loggedinas);
 		
-		JButton i = new JButton(new ImageIcon("images/info.png"));
+		JButton i = new JButton(new ImageIcon(getClass().getResource("/info.PNG")));
 		i.setLocation(750, 10);
 		i.setSize(20,20);
 		accountUI.add(i);
@@ -189,7 +189,7 @@ public class UserAccount implements Serializable, ItemListener
 			 }
 		 });
 		
-        addLogo = new JButton(new ImageIcon("images/add.png"));
+        addLogo = new JButton(new ImageIcon(getClass().getResource("/add.PNG")));
         addLogo.setFont(new Font("Arial", Font.BOLD, 14)); 
         addLogo.setSize(30,30); 
         addLogo.setLocation(50, 120); 
@@ -207,7 +207,7 @@ public class UserAccount implements Serializable, ItemListener
         
         content2.add(addLogo);
         
-        messageButton = new JButton(new ImageIcon("images/message.png")); 
+        messageButton = new JButton(new ImageIcon(getClass().getResource("/message.PNG"))); 
         messageButton.setFont(new Font("Arial", Font.BOLD, 14)); 
         messageButton.setSize(30, 30); 
         messageButton.setLocation(50, 180); 
@@ -227,7 +227,7 @@ public class UserAccount implements Serializable, ItemListener
         content2.add(messageButton);
 
        
-        delAcc = new JButton(new ImageIcon("images/accountremove.png")); 
+        delAcc = new JButton(new ImageIcon(getClass().getResource("/accountremove.PNG"))); 
         delAcc.setFont(new Font("Arial", Font.BOLD, 14)); 
         delAcc.setSize(30, 30); 
         delAcc.setLocation(50, 240); 
@@ -448,7 +448,7 @@ public class UserAccount implements Serializable, ItemListener
 	     descriptionT.setFont(new Font("Calibri Light", Font.PLAIN, 14)); 
 	     content3.add(descriptionT);
 	     
-	     JButton backButton = new JButton(new ImageIcon("images/logout.png"));
+	     JButton backButton = new JButton(new ImageIcon(getClass().getResource("/logout.PNG")));
 	     backButton.setSize(28,28);
 	     backButton.setLocation(50, 310);
 	     backButton.addActionListener(new ActionListener() 
@@ -583,7 +583,7 @@ public class UserAccount implements Serializable, ItemListener
  			listButton.setLocation(60, 30 + (i * 35));
  			int hello = i;
  			
- 			JButton delButton = new JButton(new ImageIcon("images/delete.png"));
+ 			JButton delButton = new JButton(new ImageIcon(getClass().getResource("/delete.PNG")));
  			delButton.setSize(30,30);
  			delButton.setLocation(420, 30 + (i*35));
  			delButton.addActionListener(new ActionListener() 
@@ -617,7 +617,7 @@ public class UserAccount implements Serializable, ItemListener
 				 }
  			 });
  			
- 			JButton editButton = new JButton(new ImageIcon("images/edit.png"));
+ 			JButton editButton = new JButton(new ImageIcon(getClass().getResource("/edit.PNG")));
  			editButton.setSize(30,30);
  			editButton.setLocation(460, 30 + (i*35));
  			editButton.addActionListener(new ActionListener() 
