@@ -40,7 +40,7 @@ public class Admin {
  			content.add(userAccount);
 			int num = i;
 			
-			JButton backButton = new JButton(new ImageIcon("images/logout.png"));
+			JButton backButton = new JButton(new ImageIcon(getClass().getResource("/logout.PNG")));
 			backButton.setSize(28,28);
 			backButton.setLocation(10, 420);
 			content.add(backButton);
@@ -62,7 +62,7 @@ public class Admin {
 				 }
 			 });
 			
-			JButton delButton = new JButton(new ImageIcon("images/delete.png"));
+			JButton delButton = new JButton(new ImageIcon(getClass().getResource("/delete.PNG")));
  			delButton.setSize(30,30);
  			delButton.setLocation(385, 70 + (i*50));
  			content.add(delButton);
@@ -134,7 +134,7 @@ public class Admin {
 			 }
 		 });
 		
-		JLabel msg = new JLabel(new ImageIcon("images/mail.png"));
+		JLabel msg = new JLabel(new ImageIcon(getClass().getResource("/mail.PNG")));
 		msg.setLocation(150, 20);
 		msg.setSize(40,30);
 		
